@@ -55,14 +55,14 @@ matches = np.array(matches)
 
 for src_file in matches:
     print(src_file)
-    # 1st pass
-    ffmpeg_helpers.first_pass(ffmpeg_path, src_file)
-
-    print('dddddddddddddddddddddddddddddddd')
-
-    # 2nd pass
-    dst_file = '/home/naz/PycharmProjects/video_processor/videos_src/470.webm'
-    ffmpeg_helpers.second_pass(ffmpeg_path, src_file, dst_file)
+    # # 1st pass
+    # ffmpeg_helpers.first_pass(ffmpeg_path, src_file)
+    #
+    # print('dddddddddddddddddddddddddddddddd')
+    #
+    # # 2nd pass
+    # dst_file = '/home/naz/PycharmProjects/video_processor/videos_src/470.webm'
+    # ffmpeg_helpers.second_pass(ffmpeg_path, src_file, dst_file)
 
 
 # files = glob.glob(os.path.join(src_path, '*.vid'))

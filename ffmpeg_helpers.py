@@ -17,6 +17,8 @@ def first_pass(ffmpeg_path, src_file):
 
 
 
+
+
 def second_pass(ffmpeg_path, src_file, dst_file):
 
     cmd = ffmpeg_path + " -i " + src_file + " -y -c:v libvpx-vp9 -pass 2 -b:v 1000K " \
@@ -29,7 +31,9 @@ def second_pass(ffmpeg_path, src_file, dst_file):
 
 
 
-def first_and_second_pass(ffmpeg_path, src_file, dst_file):
+
+
+def first_and_second_pass(ffmpeg_path, src_file, dst_file, dst_dir):
 
     is_bad = False
 
@@ -42,8 +46,7 @@ def first_and_second_pass(ffmpeg_path, src_file, dst_file):
         print("CalledProcessError: cant encode video")
 
         # copy file to dst as is
-        # dstdir =
-        # shutil.copy(src_file, dstdir)
+        shutil.copy(src_file, dst_dir)
 
         is_bad = True
     else:
