@@ -1,4 +1,8 @@
 import subprocess
+from db_settings import *
+import db_helpers
+import shutil
+
 
 
 def first_pass(ffmpeg_path, src_file):
@@ -27,11 +31,28 @@ def second_pass(ffmpeg_path, src_file, dst_file):
 
 def first_and_second_pass(ffmpeg_path, src_file, dst_file):
 
+    is_bad = False
+
     try:
         first_pass(ffmpeg_path, src_file)
 
         second_pass(ffmpeg_path, src_file, dst_file)
+
     except subprocess.CalledProcessError:
         print("CalledProcessError: cant encode video")
+
+        # copy file to dst as is
+        # dstdir =
+        # shutil.copy(src_file, dstdir)
+
+        is_bad = True
     else:
         print("Video encoded successfully")
+
+
+
+
+    try:
+        VideoModel.create(path_and_file=src_file, is_finished=True, is_bad=is_bad)
+    except IntegrityError:
+        print("IntegrityError: src_file exists in DB")

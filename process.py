@@ -13,7 +13,7 @@ import time
 
 db_helpers.db_table_init()
 
-ffmpeg_path = '/home/naz/bin/ffmpeg'
+ffmpeg_path = '/home/zhuma/bin/ffmpeg'
 
 
 
@@ -21,7 +21,7 @@ ffmpeg_path = '/home/naz/bin/ffmpeg'
 
 
 
-base_path = '/media/naz/6111-781C/Videodata'
+base_path = '/media/zhuma/6111-781C/Videodata'
 
 
 
