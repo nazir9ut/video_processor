@@ -2,11 +2,15 @@ import os
 import fnmatch
 import time
 
+import socket_helper
+socket_helper.get_lock('running_test')
+
 from db_settings import *
 import db_helpers
 import ffmpeg_helpers
-import string_helpers
 import path_helpers
+
+
 
 
 
@@ -29,7 +33,9 @@ dst_folder = "video_compressed"
 db_helpers.db_tables_init()
 
 
-matches = []
+
+
+
 for root, dirnames, filenames in os.walk(base_path):
     filtered = fnmatch.filter(filenames, '*' + src_ext)
 
