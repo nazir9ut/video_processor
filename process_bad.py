@@ -14,7 +14,7 @@ import db_helpers
 import ffmpeg_helpers
 import path_helpers
 import string_helpers
-
+import time
 
 
 
@@ -35,38 +35,47 @@ db_helpers.db_tables_init()
 
 
 
-bad_file_model = BadFileModel.select().first()
+bad_file_model = BadFileModel.select().where(BadFileModel.is_resolved == False).first()
 
 
 
 
 
 
-src_file = '/media/naz/6111-781C/Videodata/10-07-2015/cam0/402.vid'
+# time.sleep(9999)
+
+
+
+
+
+
+
+
+src_file = bad_file_model.path_and_file
 
 
 vlc_dst_dir = string_helpers.get_before_last_segment(src_file)
 
 
-dst_file = path_helpers.get_dst_file(src_file, vlc_dst_dir, ext="")
+vlc_dst_file = path_helpers.get_dst_file(src_file, vlc_dst_dir, ext="")
 # /media/naz/6111-781C/Videodata/10-07-2015/cam0/402res
-dst_file = dst_file + 'res'
-
-
-
-
-#
-# cmd = "cvlc  " + src_file + " :sout='#transcode{vcodec=h264,venc=ffmpeg,scale=1,deinterlace}:" \
-#       "std{access=file,mux=avi,dst=" + dst_file + "}'  --play-and-exit"
-#
-#
-# subprocess.check_output(cmd, shell=True)
+vlc_dst_file = vlc_dst_file + 'res'
 
 
 
 
 
-ff_src_file = dst_file
+cmd = "cvlc  " + src_file + " :sout='#transcode{vcodec=h264,venc=ffmpeg,scale=1,deinterlace}:" \
+      "std{access=file,mux=avi,dst=" + vlc_dst_file + "}'  --play-and-exit"
+
+
+subprocess.check_output(cmd, shell=True)
+
+
+
+
+
+ff_src_file = vlc_dst_file
 
 ff_dst_dir = path_helpers.create_dst_dirs(ff_src_file, src_folder, dst_folder)
 
