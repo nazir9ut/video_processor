@@ -20,5 +20,5 @@ class VideoModel(BaseModel):
 
 class BadFileModel(BaseModel):
     path_and_file = TextField(unique=True)
-    resolved = BooleanField(default=False)
+    is_resolved = BooleanField(default=False)
     start_dt = DateTimeField(default=datetime.datetime.now)

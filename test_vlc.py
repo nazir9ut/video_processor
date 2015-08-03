@@ -1,15 +1,26 @@
 import subprocess
 
-cmd = '''vlc "/home/naz/Desktop/632.vid" :sout='#transcode{vcodec=h264,venc=ffmpeg,scale=1,deinterlace}:std{access=file, mux=avi,dst="/home/naz/Desktop/tmp.avi"}' --play-and-exit'''
+
+src_file = '/home/naz/Desktop/427.vid'
+dst_file = '/home/naz/Desktop/tmp.avi'
+
+
+cmd = "cvlc  " + src_file + " :sout='#transcode{vcodec=h264,venc=ffmpeg,scale=1,deinterlace}:" \
+      "std{access=file,mux=avi,dst=" + dst_file + "}'  --play-and-exit"
+
+
 
 print(cmd)
 
+
 cmd_list = cmd.split()
 
-# print(cmd_list)
+
 
 for item in cmd_list:
     print(item)
 
-#
-# subprocess.check_output(cmd_list)
+
+res = subprocess.check_output(cmd, shell=True)
+
+# print(res)
