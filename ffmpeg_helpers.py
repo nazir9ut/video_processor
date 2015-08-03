@@ -35,27 +35,35 @@ def second_pass(ffmpeg_path, src_file, dst_file):
 
 def first_and_second_pass(ffmpeg_path, src_file, dst_file, dst_dir):
 
-    is_bad = False
+    # is_bad = False
+    # is_finished = True
 
     try:
         first_pass(ffmpeg_path, src_file)
 
         second_pass(ffmpeg_path, src_file, dst_file)
 
+        try:
+            VideoModel.create(path_and_file=src_file)
+        except IntegrityError:
+            print("IntegrityError: src_file exists in DB")
+
     except subprocess.CalledProcessError:
         print("CalledProcessError: cant encode video")
 
-        # copy file to dst as is
-        shutil.copy(src_file, dst_dir)
+        try:
+            BadFileModel.create(path_and_file=src_file)
+        except IntegrityError:
+            print("IntegrityError: src_file exists in DB")
 
-        is_bad = True
+        # copy file to dst as is
+        # shutil.copy(src_file, dst_dir)
+
+        # is_bad = True
+        # is_finished = False
     else:
         print("Video encoded successfully")
 
 
 
 
-    try:
-        VideoModel.create(path_and_file=src_file, is_finished=True, is_bad=is_bad)
-    except IntegrityError:
-        print("IntegrityError: src_file exists in DB")

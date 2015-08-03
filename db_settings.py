@@ -11,13 +11,14 @@ class BaseModel(Model):
 
 class VideoModel(BaseModel):
     path_and_file = TextField(unique=True)
-    is_finished = BooleanField(default=False)
-    is_bad = BooleanField(default=False)
+    # is_finished = BooleanField(default=False)
+    # is_bad = BooleanField(default=False)
     start_dt = DateTimeField(default=datetime.datetime.now)
     # end_dt = DateTimeField()
 
 
 
-# class BadVideoModel(BaseModel):
-#     path_and_file = TextField(unique=True)
-#     start_dt = DateTimeField(default=datetime.datetime.now)
+class BadFileModel(BaseModel):
+    path_and_file = TextField(unique=True)
+    resolved = BooleanField(default=False)
+    start_dt = DateTimeField(default=datetime.datetime.now)
