@@ -67,3 +67,15 @@ def first_and_second_pass(ffmpeg_path, src_file, dst_file, dst_dir):
 
 
 
+def first_and_second_pass_bad(ffmpeg_path, src_file, dst_file):
+    try:
+        first_pass(ffmpeg_path, src_file)
+        second_pass(ffmpeg_path, src_file, dst_file)
+    except subprocess.CalledProcessError:
+        result = False
+    else:
+        result = True
+
+    return result
+
+
