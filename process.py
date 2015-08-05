@@ -9,22 +9,30 @@ from db_settings import *
 import db_helpers
 import ffmpeg_helpers
 import path_helpers
+import config as cfg
 
 
 
 
 
+# ffmpeg_path = '/home/naz/bin/ffmpeg'
+ffmpeg_path = cfg.ffmpeg_path
 
+# base_path = '/media/naz/6111-781C/Videodata'
+base_path = cfg.base_path + cfg.src_folder
 
+# src_ext = '.vid'
+src_ext = cfg.src_ext
 
-ffmpeg_path = '/home/naz/bin/ffmpeg'
+# dst_ext = '.webm'
+dst_ext = cfg.dst_ext
 
+# src_folder = "Videodata"
+src_folder = cfg.src_folder
 
-base_path = '/media/naz/6111-781C/Videodata'
-src_ext = '.vid'
-dst_ext = '.webm'
-src_folder = "Videodata"
-dst_folder = "video_compressed"
+# dst_folder = "video_compressed"
+dst_folder = cfg.dst_folder
+
 
 
 

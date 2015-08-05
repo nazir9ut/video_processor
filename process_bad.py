@@ -12,18 +12,33 @@ import ffmpeg_helpers
 import path_helpers
 import string_helpers
 import vlc_helpers
+import config as cfg
 
 
 
+# ffmpeg_path = '/home/naz/bin/ffmpeg'
+ffmpeg_path = cfg.ffmpeg_path
 
-ffmpeg_path = '/home/naz/bin/ffmpeg'
+# ffmpeg_path = '/home/naz/bin/ffmpeg'
+base_path = cfg.base_path
 
-base_path = '/media/naz/6111-781C/'
+# src_ext = '.vid'
 src_ext = '.vid'
-dst_ext = '.webm'
-src_folder = "Videodata"
-dst_folder = "video_compressed"
-tmp_name_postfix = 'res'
+
+# dst_ext = '.webm'
+dst_ext = cfg.dst_ext
+
+# src_folder = "Videodata"
+src_folder = cfg.src_folder
+
+# dst_folder = "video_compressed"
+dst_folder = cfg.dst_folder
+
+# tmp_name_postfix = 'res'
+tmp_name_postfix = cfg.tmp_name_postfix
+
+
+
 
 
 db_helpers.db_tables_init()
