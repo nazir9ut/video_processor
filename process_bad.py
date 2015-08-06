@@ -23,7 +23,7 @@ ffmpeg_path = cfg.ffmpeg_path
 base_path = cfg.base_path
 
 # src_ext = '.vid'
-src_ext = '.vid'
+src_ext = cfg.src_ext
 
 # dst_ext = '.webm'
 dst_ext = cfg.dst_ext
