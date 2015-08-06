@@ -1,0 +1,6 @@
+* * * * *  /usr/bin/python  /home/naz/PycharmProjects/video_processor/process.py   > /tmp/backup.log 2>&1
+
+* * * * *  /usr/bin/python  /home/naz/PycharmProjects/video_processor/process_bad.py   > /tmp/backup_bad.log 2>&1
+
+
+

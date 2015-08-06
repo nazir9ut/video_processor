@@ -53,7 +53,7 @@ for root, dirnames, filenames in os.walk(base_path):
 
         filtered = sorted(filtered, key = lambda filename: time.ctime(os.path.getmtime(os.path.join(root, filename))))
 
-        # del filtered[-1]
+        del filtered[-1]
 
         for filename in filtered:
             src_file = os.path.join(root, filename)

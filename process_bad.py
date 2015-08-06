@@ -110,6 +110,13 @@ while True:
 
 
 
+    try:
+        os.remove(vlc_dst_file)
+    except OSError:
+        print('OSError')
+    else:
+        print('OSError')
+
 
 
 
